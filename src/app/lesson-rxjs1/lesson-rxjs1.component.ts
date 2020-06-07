@@ -14,12 +14,14 @@ export class LessonRxjs1Component implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    const sbj = new ReplaySubject();
-    sbj.next(1);
-    sbj.next(2);
-    sbj.next(3);
-    sbj.next(4);
-    sbj.subscribe(val => console.log(val));
+    // Observable
+    const obsv = new Observable(obs => {
+      obs.next(1);
+      obs.next(2);
+      obs.next(3);
+    });
+
+    obsv.subscribe(val => console.log(val));
   }
 
 }
