@@ -15,13 +15,28 @@ export class LessonRxjs1Component implements OnInit {
 
   ngOnInit(): void {
     // Observable
-    const obsv = new Observable(obs => {
+    /*const obsv$ = new Observable(obs => {
+      obs.next(1);
+      setTimeout(() => obs.next(2), 1000);
+      obs.next(3);
+      obs.error(1);
+      obs.next(4);
+    });
+
+    obsv$.subscribe(val => console.log(val)); */
+
+    const obsv1$ = new Observable(obs => {
       obs.next(1);
       obs.next(2);
+      setTimeout( () => obs.error('error'), 1500);
       obs.next(3);
     });
 
-    obsv.subscribe(val => console.log(val));
+    obsv1$.subscribe(
+      val => console.log(val),
+      (err) => console.log(err),
+      () => console.log('ok')
+    );
   }
 
 }
