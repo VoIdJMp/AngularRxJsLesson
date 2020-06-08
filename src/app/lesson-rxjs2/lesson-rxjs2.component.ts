@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { from, interval, Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
+import {filter, map, tap, take, takeLast, takeWhile, scan, reduce} from 'rxjs/operators';
 
 @Component({
   selector: 'app-lesson-rxjs2',
@@ -37,7 +37,23 @@ export class LessonRxjs2Component implements OnInit {
     setTimeout( () => { sub.unsubscribe(); }, 5000); */
 
     // Operators in RxJs
-    
+
+    const strm$ = interval(1000)
+      .pipe(
+        // tap(val => console.log('Tap: ', val)),
+        // map( val => val * 2),
+        // filter( val => val % 2 === 0),
+        take(10),
+        // takeLast(5),
+        // takeWhile( val => val < 7),
+        // scan((acc, v) => acc + v),
+        reduce((acc, v) => acc + v)
+      );
+
+    strm$.subscribe( {
+      next: v => console.log('Next: ', v),
+      complete: () => console.log('Complate')
+    });
   }
 
 }
