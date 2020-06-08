@@ -35,6 +35,9 @@ export class LessonRxjs2Component implements OnInit {
     /*const ost$ = interval(1000);
     const sub = ost$.subscribe( val => console.log(val));
     setTimeout( () => { sub.unsubscribe(); }, 5000); */
+
+    // Operators in RxJs
+    
   }
 
 }
